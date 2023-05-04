@@ -18,6 +18,5 @@ class UploadController extends Controller
     public function store(Request $request)
     {
         $this->upload->store($request);
-        return "OK";
     }
 }

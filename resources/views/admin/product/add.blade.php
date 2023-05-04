@@ -51,10 +51,12 @@
                 <textarea name="content" id="content"class="form-control"></textarea>
             </div>
 
-            <form class="form-group">
+            <div class="form-group">
                 <label for="menu">Ảnh sản phẩm</label>
                 <input type="file" id="upload" class="form-control" >
-            </form>
+                <div id="image_show"></div>
+                <input type="hidden" name="file" id="file">
+            </div>
 
             <div class="form-group">
                 <label>Kích Hoạt</label>

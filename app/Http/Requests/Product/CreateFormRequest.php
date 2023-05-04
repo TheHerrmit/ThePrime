@@ -24,8 +24,7 @@ class CreateFormRequest extends FormRequest
         return [
             'name'=>'required',
             'menu_id'=>'required',
-            'price'=>'required'
-
+            'thumb'=>'required'
 
         ];
     }
@@ -34,7 +33,8 @@ class CreateFormRequest extends FormRequest
         return [
             'name.required' => 'Vui lòng nhập tên sản phẩm',
             'menu_id.required' => 'Vui lòng chọn danh mục',
-            'price.required'=>'Vui lòng nhập giá sản phẩm'
+            'thumb.required'=> 'Vui lòng cung cấp ảnh sản phẩm'
+
 
         ];
     }

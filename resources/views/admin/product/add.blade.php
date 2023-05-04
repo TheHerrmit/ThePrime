@@ -9,7 +9,7 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label>Tên Sản Phẩm</label>
-                        <input type="text" class="form-control" name="name" placeholder="Nhập tên sản phẩm">
+                        <input type="text" class="form-control" name="name" value="{{old('name')}}" placeholder="Nhập tên sản phẩm">
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -30,25 +30,25 @@
                     <!-- textarea -->
                     <div class="form-group">
                         <label>Giá gốc</label>
-                        <input class="form-control" name="price" placeholder="Enter ..."></input>
+                        <input class="form-control" name="price" value="{{old('price')}}" placeholder="Enter ..."></input>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label>Giá giảm</label>
-                        <input class="form-control"  name="price_sale" placeholder="Enter ..." ></input>
+                        <input class="form-control"  name="price_sale" Value="{{old('price_sale')}}" placeholder="Enter ..." ></input>
                     </div>
                 </div>
             </div>
 
                 <div class="form-group">
                     <label>Mô Tả </label>
-                    <textarea name="description" class="form-control"></textarea>
+                    <textarea name="description" Value="{{old('description')}}"class="form-control"></textarea>
                 </div>
 
             <div class="form-group" id="#editor">
                 <label>Mô Tả Chi Tiết</label>
-                <textarea name="content" id="content"class="form-control"></textarea>
+                <textarea name="content" id="content" Value="{{old('content')}}"class="form-control"></textarea>
             </div>
 
             <div class="form-group">
@@ -57,7 +57,7 @@
                 <div id="image_show">
 
                 </div>
-                <input type="hidden" name="file" id="file">
+                <input type="hidden" name="thumb" id="thumb">
             </div>
 
             <div class="form-group">

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\CreateFormRequest;
@@ -21,9 +21,7 @@ class ProductController extends Controller
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
         return view('admin.product.add',[
@@ -32,12 +30,10 @@ class ProductController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(CreateFormRequest $request)
     {
-        $result = $this->productService->create($request);
+        $result = $this->productService->insert($request);
 
         return redirect()->back();
     }

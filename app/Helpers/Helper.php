@@ -18,11 +18,11 @@ class Helper
                 <td>'. $menu->updated_at .'</td>
                 <td>
                     <a class="btn btn-primary btn-sm" href="/admin/menus/edit/' . $menu->id . '">
-                        <i class="fa-solid fa-pen-to-square"></i>
+                        <i class="fas fa-edit"></i>
                      </a>
                     <a class="btn btn-danger btn-sm" href="#"
                     onclick="removeRow('. $menu->id .', \'/admin/menus/destroy\')">
-                            <i class="fa-solid fa-trash"></i>
+                            <i class="fas fa-trash"></i>
                     </a>
                 </td>
                     </tr>

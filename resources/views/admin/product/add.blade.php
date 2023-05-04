@@ -17,8 +17,8 @@
                         <label>Danh mục</label>
                         <select class="form-control" name="menu_id">
                             <option value="0">Danh mục cha</option>
-                            @foreach($products as $product)
-                                <option value="{{$product->id}}">{{$product->name}}</option>
+                            @foreach($menus as $menu)
+                                <option value="{{$menu->id}}">{{$menu->name}}</option>
                             @endforeach
                         </select>
 

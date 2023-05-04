@@ -43,4 +43,9 @@ class ProductAdminService
         }
         return true;
     }
+    public function get()
+    {
+        return Product::with('menu')
+            ->orderByDesc('id')->paginate(15);
+    }
 }

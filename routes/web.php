@@ -8,7 +8,6 @@ use App\Http\Controllers\admin\MenuController;
 use \App\Http\Controllers\admin\ProductController;
 use \App\Http\Controllers\admin\UploadController;
 
-
 Route::get ('admin/users/login', [LoginController::class,'index'])->name('login');
 Route::post('admin/users/login/store',[LoginController::class,'store']);
 
@@ -30,16 +29,16 @@ Route::middleware(['auth'])->group(function (){
         });
 
         #Product
-        Route::prefix('product')->group(function (){
-            Route::get('add',[ProductController::class,'create'] );
-            Route::post('add',[ProductController::class,'store'] );
-            Route::get('list',[ProductController::class,'index'] );
+        Route::prefix('products')->group(function () {
+            Route::get('add', [ProductController::class, 'create']);
+            Route::post('add', [ProductController::class, 'store']);
+            Route::get('list', [ProductController::class, 'index']);
             Route::get('edit/{menu}',[ProductController::class,'show'] );
             Route::post('edit/{menu}',[ProductController::class,'update'] );
             Route::DELETE('destroy',[ProductController::class,'destroy'] );
         });
         #upload
-            Route::post('upload/services',[UploadController::class,'store']);
+        Route::post('upload/services',[UploadController::class,'store']);
 
     });
 });

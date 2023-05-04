@@ -19,4 +19,9 @@ class Product extends Model
         'thumb'
 
     ];
+    public function menu(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Menu::class, 'id', 'menu_id')
+            ->withDefault(['name' => '']);
+    }
 }

@@ -18,7 +18,10 @@ class ProductController extends Controller
 
     public function index()
     {
-        //
+        return view('admin.product.list',[
+            'title'=>'Danh sách sản phẩm',
+            'products'=>$this->productService->get()
+        ]);
     }
 
 
@@ -26,7 +29,7 @@ class ProductController extends Controller
     {
         return view('admin.product.add',[
             'title' =>'Thêm sản phẩm',
-            'products'=>$this->productService->getMenu()
+            'menus'=>$this->productService->getMenu()
         ]);
     }
 

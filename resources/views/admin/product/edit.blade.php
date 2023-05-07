@@ -37,19 +37,19 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label>Giá giảm</label>
-                        <input class="form-control"  name="price_sale" Value="{{$product->price_sale}}" placeholder="Enter ..." ></input>
+                        <input class="form-control"  name="price_sale" value="{{$product->price_sale}}" placeholder="Enter ..." ></input>
                     </div>
                 </div>
             </div>
 
             <div class="form-group">
                 <label>Mô Tả </label>
-                <textarea name="description" Value="{{$product->description}}"class="form-control"></textarea>
+                <textarea name="description" class="form-control">{{$product->description}}</textarea>
             </div>
 
             <div class="form-group" id="#editor">
                 <label>Mô Tả Chi Tiết</label>
-                <textarea name="content" id="content" Value="{{$product->content}}"class="form-control"></textarea>
+                <textarea name="content" id="content" class="form-control">{{$product->content}}</textarea>
             </div>
 
             <div class="form-group">

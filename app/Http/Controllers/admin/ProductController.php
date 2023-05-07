@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\CreateFormRequest;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Services\Product\ProductAdminService;
 
@@ -44,9 +45,13 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Product $product)
     {
-        //
+        return view('admin.product.edit',[
+            'title'=>'Chỉnh sửa sản phẩm',
+            'product'=>$product,
+            'menus'=>$this->productService->getMenu()
+        ]);
     }
 
     /**

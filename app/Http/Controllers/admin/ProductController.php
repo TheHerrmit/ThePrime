@@ -54,28 +54,24 @@ class ProductController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request,Product $product)
     {
         $this->productService->update($request,$product);
         return redirect()->back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+
+    public function destroy(Request $request): \Illuminate\Http\JsonResponse
     {
-        //
+        $result = $this ->productService ->delete($request);
+        if($request){
+            return response()->json([
+               'error'=> false,
+                'message'=>'Xoa than cong',
+
+            ]);
+        }
+        return response()->json(['error'=>true]);
     }
 }

@@ -7,6 +7,7 @@ use App\Http\Middleware\Authenticate;
 use App\Http\Controllers\admin\MenuController;
 use \App\Http\Controllers\admin\ProductController;
 use \App\Http\Controllers\admin\UploadController;
+use App\Http\Controllers\Admin\SliderController;
 
 Route::get ('admin/users/login', [LoginController::class,'index'])->name('login');
 Route::post('admin/users/login/store',[LoginController::class,'store']);
@@ -40,6 +41,15 @@ Route::middleware(['auth'])->group(function (){
         #upload
         Route::post('upload/services',[UploadController::class,'store']);
 
+        #Slider
+        Route::prefix('sliders')->group(function () {
+            Route::get('add', [SliderController::class, 'create']);
+            Route::post('add', [SliderController::class, 'store']);
+            Route::get('list', [SliderController::class, 'index']);
+            Route::get('edit/{slider}', [SliderController::class, 'show']);
+            Route::post('edit/{slider}', [SliderController::class, 'update']);
+            Route::DELETE('destroy', [SliderController::class, 'destroy']);
+        });
     });
 });
 

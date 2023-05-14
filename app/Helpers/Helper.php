@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Helpers;
-
+use Illuminate\Support\Str;
 class Helper
 {
-    public static function menus($menus, $parent_id=0,$char = '')
+    public static function menu($menus, $parent_id=0,$char = '')
     {
         $html = '';
 
@@ -28,7 +28,7 @@ class Helper
                     </tr>
                 ';
                 unset($menus[$key]); //function xóa của php xóa menu tổng
-                $html .= self::menus($menus,$menu->id,$char.'|-- ');
+                $html .= self::menu($menus,$menu->id,$char.'|-- ');
             }
         }
         return $html;
@@ -37,5 +37,22 @@ class Helper
         {
         return $active == 0 ? '<span class="btn-xs btn btn-danger">NO</span>':'<span class="btn-xs btn btn-success">YES</span>';
 
+        }
+
+        public static function menus($menus,$parent_id = 0)
+        {
+            $html = '';
+            foreach ($menus as $key => $menu) {
+                if ($menu->parent_id == $parent_id) {
+                    $html .= '
+                    <li>
+                        <a href="/danh-muc/' . $menu->id . '-' . Str::slug($menu->name, '-') . '.html">
+                            ' . $menu->name . '
+                        </a>
+                         </li>';
+
+                }
+            }
+            return $html;
         }
 }

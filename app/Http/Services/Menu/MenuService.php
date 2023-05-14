@@ -36,6 +36,13 @@ public function create($request)
         }
     return true;
     }
+    public function show()
+    {
+        return Menu::select('name', 'id')
+            ->where('parent_id', 0)
+            ->orderbyDesc('id')
+            ->get();
+    }
 
     public function update($request,$menu) : bool
     {

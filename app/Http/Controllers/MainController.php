@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
-    public function __construct(SliderService $slider, MenuService $menu,)
+    public function __construct(SliderService $slider, MenuService $menu)
     {
         $this->slider = $slider;
         $this->menu = $menu;

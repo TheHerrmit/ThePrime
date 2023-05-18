@@ -68,7 +68,7 @@ class ProductController extends Controller
         if($request){
             return response()->json([
                'error'=> false,
-                'message'=>'Xoa than cong',
+                'message'=>'Xoa thanh cong',
 
             ]);
         }

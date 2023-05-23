@@ -69,4 +69,24 @@ public function create($request)
         }
         return false;
     }
+    public function getId($id)
+    {
+        return Menu::where('id', $id)->where('active',1)->firstOrFail();
+    }
+
+    public function getProduct($menu, $request)
+    {
+        $query = $menu->products()
+            ->select('id', 'name', 'price', 'price_sale', 'thumb')
+            ->where('active', 1);
+
+        if ($request->input('price')) {
+            $query->orderBy('price', $request->input('price'));
+        }
+
+        return $query
+            ->orderByDesc('id')
+            ->paginate(12)
+            ->withQueryString();
+    }
 }

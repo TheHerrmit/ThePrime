@@ -17,7 +17,7 @@ class MainController extends Controller
     }
     public function index()
     {
-        return view('main',[
+        return view('home',[
             'title'=>'Shop Nước Hoa Shen',
             'menus'=> $this->menu->show(),
             'sliders' => $this->slider->show(),

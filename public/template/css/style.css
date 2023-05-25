@@ -6,3 +6,7 @@ body, .main-menu > li > a, .ltext-102{
 .hidden{
     display: none;
 }
+.stext-109 {
+    font-family: 'Roboto', sans-serif ;
+    font-size: 12px;
+    line-height: 1.833333;}

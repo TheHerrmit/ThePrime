@@ -36,6 +36,13 @@ public function create($request)
         }
     return true;
     }
+    public function show()
+    {
+        return Menu::select('name', 'id')
+            ->where('parent_id', 0)
+            ->orderbyDesc('id')
+            ->get();
+    }
 
     public function update($request,$menu) : bool
     {
@@ -61,5 +68,25 @@ public function create($request)
             return Menu::where('id',$id)->orWhere('parent_id',$id)->delete();
         }
         return false;
+    }
+    public function getId($id)
+    {
+        return Menu::where('id', $id)->where('active',1)->firstOrFail();
+    }
+
+    public function getProduct($menu, $request)
+    {
+        $query = $menu->products()
+            ->select('id', 'name', 'price', 'price_sale', 'thumb')
+            ->where('active', 1);
+
+        if ($request->input('price')) {
+            $query->orderBy('price', $request->input('price'));
+        }
+
+        return $query
+            ->orderByDesc('id')
+            ->paginate(12)
+            ->withQueryString();
     }
 }

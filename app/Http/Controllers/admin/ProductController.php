@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\CreateFormRequest;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Services\Product\ProductAdminService;
 
@@ -18,7 +19,10 @@ class ProductController extends Controller
 
     public function index()
     {
-        //
+        return view('admin.product.list',[
+            'title'=>'Danh sách sản phẩm',
+            'products'=>$this->productService->get()
+        ]);
     }
 
 
@@ -26,7 +30,7 @@ class ProductController extends Controller
     {
         return view('admin.product.add',[
             'title' =>'Thêm sản phẩm',
-            'products'=>$this->productService->getMenu()
+            'menus'=>$this->productService->getMenu()
         ]);
     }
 
@@ -41,32 +45,33 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Product $product)
     {
-        //
+        return view('admin.product.edit',[
+            'title'=>'Chỉnh sửa sản phẩm',
+            'product'=>$product,
+            'menus'=>$this->productService->getMenu()
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+
+    public function update(Request $request,Product $product)
     {
-        //
+        $this->productService->update($request,$product);
+        return redirect()->back();
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Request $request): \Illuminate\Http\JsonResponse
     {
-        //
+        $result = $this ->productService ->delete($request);
+        if($request){
+            return response()->json([
+               'error'=> false,
+                'message'=>'Xoa thanh cong',
+
+            ]);
+        }
+        return response()->json(['error'=>true]);
     }
 }

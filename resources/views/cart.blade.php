@@ -14,12 +14,14 @@
         <div class="header-cart-content flex-w js-pscroll">
             @php $sumPriceCart = 0; @endphp
             <ul class="header-cart-wrapitem w-full">
+                @if(!is_null(\Illuminate\Support\Facades\Session::get('carts')))
                 @if (count($products) > 0)
                     @foreach($products as $key => $product)
                         @php
                             $price = \App\Helpers\Helper::price($product->price, $product->price_sale);
-                            $sumPriceCart += $product->price_sale != 0 ? $product->price_sale : $product->price;
-                            \Illuminate\Support\Facades\Session::get('carts')
+                            $carts =\Illuminate\Support\Facades\Session::get('carts');
+                            $value = $carts[$product->id];
+                            $sumPriceCart += ($product->price_sale != 0 ? $product->price_sale : $product->price)*$value;
                         @endphp
                         <li class="header-cart-item flex-w flex-t m-b-12">
                             <div class="header-cart-item-img">
@@ -32,11 +34,15 @@
                                 </a>
 
                                 <span class="header-cart-item-info">
-                                       {!! $price !!} x {{$carts[$product->id]}}
+                                       {!! $price !!} x {!! $carts[$product->id] !!}
                                 </span>
                             </div>
                         </li>
                     @endforeach
+                @endif
+
+
+
                 @endif
 
             </ul>

@@ -127,4 +127,25 @@ class CartService
 
         return Cart::insert($data);
     }
+    public function getCustomer()
+    {
+        return Customer::orderByDesc('id')->paginate(15);
+    }
+
+    public function getProductForCart($customer)
+    {
+        return $customer->carts()->with(['product' => function ($query) {
+            $query->select('id', 'name', 'thumb');
+        }])->get();
+    }
+    public function destroy($request)
+    {
+        $customer= Customer::where('id', $request->input('id'))->first();
+        if ($customer) {
+            $customer->delete();
+            return true;
+        }
+
+        return false;
+    }
 }
